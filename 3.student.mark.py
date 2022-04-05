@@ -1,4 +1,5 @@
-
+from math import *
+from numpy import array
 
 class Courses:
     def __init__(self, id, name, num_stu):
