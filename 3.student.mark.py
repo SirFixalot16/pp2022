@@ -1,4 +1,6 @@
 import math
+import curses
+from curses import wrapper
 from numpy import array
 
 class Courses:
@@ -99,24 +101,35 @@ def Student_Autofill(StuList, CourseList):
                 if List.get_name() == CourseList[x].get_name():
                     CourseList.append(StuList[y].get_name())
 
-        
 CourseList = []
-StuList = []
+StuList = []        
 
-Course0 = Courses("000", "Zero", 123)
-Course1 = Courses("001", "Un", 123)
-Course2 = Courses("002", "Deux", 123)
-Course3 = Courses("003", "Trois", 123)
-Course4 = Courses("004", "Quatre", 123)
 
-Course0.show()
-Cor0 = []
-Stu0 = Student("240", "Tai", "16/01/1995", Cor0)
-Cor0.append(Course0)
-Cor0.append(Course1)
-Stu0.intro()
+def main(stdscr):
+    
+    Course0 = Courses("000", "Zero", 123)
+    Course1 = Courses("001", "Un", 123)
+    Course2 = Courses("002", "Deux", 123)
+    Course3 = Courses("003", "Trois", 123)
+    Course4 = Courses("004", "Quatre", 123)
 
-CourseList.append(Cor0)
-StuList.append(Stu0)
+    Course0.show()
+    Cor0 = []
+    Stu0 = Student("240", "Tai", "16/01/1995", Cor0)
+    Cor0.append(Course0)
+    Cor0.append(Course1)
+    Stu0.intro()
 
-print("\nHellow orld") # Quick debug code, pay no mind
+    CourseList.append(Cor0)
+    StuList.append(Stu0)
+
+    stdscr = curses.initscr()
+    stdscr.clear()
+    stdscr.addstr(10, 15, 'brello browld')
+    stdscr.refresh()
+    stdscr.getch()
+
+wrapper(main)
+
+if __name__ == "__main__":
+    main()

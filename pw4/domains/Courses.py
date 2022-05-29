@@ -1,3 +1,5 @@
+import math
+
 class Courses:
     def __init__(self, id, name, num_stu):
         self.id = id
